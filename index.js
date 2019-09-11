@@ -3,6 +3,9 @@ const app = express();
 const port = process.env.PORT;
 
 app.get('/:url', function (req, res) {
+  if (!req.params.url) {
+    res.redirect("discordapp.com");
+  }
   let leurl = req.params.url;
   res.redirect(leurl);
 })
