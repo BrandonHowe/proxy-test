@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proxify</title>
+</head>
+<body>
+    URL: <input id="leinput"></input>
+    <button onclick="submitUrl()">Submit</button>
+</body>
+<script>
+
+const submitUrl = () => {
+    const leurl = document.getElementById("leinput").value;
+    const btoale = btoa(leurl);
+    console.log(btoale);
+    const url = "/" + btoale;
+    console.log(url);
+    const cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+    // var request = new XMLHttpRequest();
+    // request.onreadystatechange = function() {
+    //   console.log('readyStatechange:  ' + request.readyState);
+    // };
+    // console.log('Before open: ' + request.readyState);
+    // // request.responseType = 'arraybuffer';
+    // request.open('GET', url);
+    // console.log(url);
+    // request.onload = function() {
+    //   console.log(request.response);
+    //   console.log(request.response.byteLength);
+    // };
+    // request.send();
+    // console.log('After send: ' + request.readyState);
+    // console.log(request.responseText);
+    // document.documentElement.innerHTML = request.responseText;
+    // window.location.replace(url);
+    // console.log("complete");
+    function doCORSRequest(options, printResult) {
+      var x = new XMLHttpRequest();
+      x.open(options.method, cors_api_url + options.url);
+      x.onload = x.onerror = function() {
+        printResult(
+          options.method + ' ' + options.url + '\n' +
+          x.status + ' ' + x.statusText + '\n\n' +
+          (x.responseText || '')
+        );
+      };
+      if (/^POST/i.test(options.method)) {
+        x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      }
+      x.send(options.data);
+    }
+    doCORSRequest({method: "GET", url: leurl, data: ""}, function printResult(result){document.write(result)})
+}
+
+</script>
+</html>

@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/xWafl/vpnlol/issues"
   },
-  "homepage": "https://github.com/xWafl/vpnlol#readme"
+  "homepage": "https://github.com/xWafl/vpnlol#readme",
+  "dependencies": {
+    "atob": "^2.1.2",
+    "btoa": "^1.2.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "request": "^2.88.0"
+  }
 }
